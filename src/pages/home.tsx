@@ -1,4 +1,5 @@
 import styled from '@emotion/styled';
+
 import React from 'react';
 
 export const HomePage = () => {
@@ -6,8 +7,8 @@ export const HomePage = () => {
     <StyledHomeContainer>
       <StyledText>
         This is&nbsp;
-        <span style={{ color: '#e621c9' }}>Home</span>
-        &nbsp;Page !
+        <span style={{ color: '#7d60ff' }}>Home</span>
+        &nbsp;page !
       </StyledText>
     </StyledHomeContainer>
   );

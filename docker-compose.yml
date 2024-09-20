@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  app:
+    # 只在初次启动时构建基础镜像，后续启动时直接使用volumes挂载
+    image: basic-template
+    ports:
+      - '10000:80'
+    # 将本地build后的dist目录挂载到容器中，替换掉容器中默认的dist目录，
+    # 这样在容器中运行时，会使用我们本地build后的dist目录
+    # 理论上只需要构建一次，然后使用volumes挂载，后续只需要本地build生成dist目录即可，不需要重新构建镜像
+    volumes:
+      - ./dist:/usr/share/nginx/html

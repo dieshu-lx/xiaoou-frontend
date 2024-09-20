@@ -6,6 +6,7 @@ import { AboutPage } from './pages/about';
 import { CommonHeader } from './pages/components/common-header';
 import { HomePage } from './pages/home';
 
+// 在进行任何操作之前，请先查看README.md文件！！！！这很重要！！！！
 export default () => {
   return (
     <HashRouter>

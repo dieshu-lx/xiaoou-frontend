@@ -36,6 +36,22 @@
 
 > 运行该命令会清除 yarn 缓存，并且会删除 node_modules 并重新安装依赖
 
+## 使用Dockerfile构建镜像
+
+    ```bash
+    docker build -t basic-template .
+    ```
+
+> 初次构建镜像时使用，理论上仅需要构建一次
+
+## 使用Dockerfile运行容器
+
+    ```bash
+    docker compose up
+    ```
+
+> 容器启动后，会使用volumes挂载dist目录，后续只需要在本地build，重启容器即可，不需要重新构建镜像,访问地址：http://localhost:10000
+
 ## lint规范
 
 **保存时会自动修复的问题**

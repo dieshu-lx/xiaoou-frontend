@@ -9,10 +9,6 @@
     "moduleResolution": "Node", //模块解析策略
     "resolveJsonModule": true, //允许导入Json模块
     "jsx": "react",
-    "baseUrl": "./",
-    "paths": {
-      "@": ["./src"]
-    },
     "outDir": "./dist"
   },
   "include": ["./src/**/*.ts", "./src/**/*.tsx"],
