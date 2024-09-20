@@ -14,7 +14,7 @@ export default () => {
         {/* 通配符，找不到页面时进入该页面 */}
         <Route path="*" element={<HomePage />} />
         {/* index表示初始页面 */}
-        <Route index path="/" element={<HomePage />} />
+        <Route path="/" element={<HomePage />} />
         <Route path="/about" element={<AboutPage />} />
       </Routes>
     </HashRouter>

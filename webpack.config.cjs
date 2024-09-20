@@ -23,7 +23,7 @@ module.exports = {
           loader: 'babel-loader',
           options: {
             presets: ['@babel/preset-env', '@babel/preset-react', '@babel/preset-typescript'],
-          },
+      },
         },
       },
       {
@@ -41,7 +41,6 @@ module.exports = {
     compress: true, // 启用 gzip 压缩
     port: 9000, // 服务器端口号
     historyApiFallback: true,
-    hot: true, // 启用热模块替换
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -50,18 +49,4 @@ module.exports = {
     }),
   ],
   mode: 'development',
-  devtool: 'eval-source-map', // 为开发环境添加源映射
-  optimization: {
-    moduleIds: 'deterministic',
-    runtimeChunk: 'single',
-    splitChunks: {
-      cacheGroups: {
-        vendor: {
-          test: /[\\/]node_modules[\\/]/,
-          name: 'vendors',
-          chunks: 'all',
-        },
-      },
-    },
-  },
 };

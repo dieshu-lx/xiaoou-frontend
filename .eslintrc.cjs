@@ -35,7 +35,6 @@ module.exports = {
     '@typescript-eslint/no-explicit-any': 'error', // 禁止使用any类型
     'unused-imports/no-unused-imports': 'error', // 禁止未使用的导入
     'prettier/prettier': 'error', // 强制使用prettier格式化
-    'react/react-in-jsx-scope': 'off', // 不需要在JSX中导入React
     '@emotion/jsx-import': 'error', // emotion JSX导入规则
     '@emotion/pkg-renaming': 'error', // emotion包重命名规则
     'react/display-name': 'off', // 关闭display-name规则

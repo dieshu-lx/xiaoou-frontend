@@ -8,16 +8,16 @@
   "type": "module",
   "private": false,
   "scripts": {
-    "dev": "webpack serve --config webpack.config.cjs --open",
-    "clean": "yarn cache clean && rm -rf node_modules && yarn",
-    "build": "webpack --config webpack.config.cjs --mode production",
-    "lint": "eslint 'src/**/*.{js,jsx,ts,tsx}' --fix",
-    "type-check": "tsc --noEmit"
+    "dev": "webpack server --config webpack.config.cjs --open",
+    "clean": "yarn cache clean && rm -rf node_modules & sleep 5 && yarn",
+    "build": "webpack --config webpack.config.cjs",
+    "lint": "eslint 'src/**/*.{js,tsx}' --fix"
   },
   "dependencies": {
-    "antd": "^5.20.6",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-router-dom": "^6.24.1"
   },
   "devDependencies": {
@@ -47,5 +47,6 @@
     "webpack": "^5.92.1",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4"
-  }
+  },
+  "packageManager": "yarn@4.4.1+sha512.f825273d0689cc9ead3259c14998037662f1dcd06912637b21a450e8da7cfeb4b1965bbee73d16927baa1201054126bc385c6f43ff4aa705c8631d26e12460f1"
 }
