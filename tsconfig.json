@@ -1,16 +1,25 @@
 {
   "compilerOptions": {
-    "target": "ESNext", //编译目标版本   ESNext表示使用最新ES版本规范
-    "module": "ESNext", //生成模块代码规范
-    "strict": true,
-    "esModuleInterop": true, //允许默认导入
-    "skipLibCheck": true, //跳过声明文件类型检查
-    "forceConsistentCasingInFileNames": true, //强制文件名大小写一致
-    "moduleResolution": "Node", //模块解析策略
-    "resolveJsonModule": true, //允许导入Json模块
-    "jsx": "react",
-    "outDir": "./dist"
+    "target": "ESNext", // 编译目标版本，使用最新的 ECMAScript 特性
+    "module": "ESNext", // 生成模块代码规范，使用最新的 ECMAScript 模块系统
+    "strict": true, // 启用所有严格类型检查选项
+    "esModuleInterop": true, // 允许使用 import 语法导入 CommonJS 模块
+    "skipLibCheck": true, // 跳过声明文件的类型检查，提高编译速度
+    "forceConsistentCasingInFileNames": true, // 强制文件名大小写一致，避免跨平台问题
+    "moduleResolution": "Node", // 使用 Node.js 风格的模块解析策略
+    "resolveJsonModule": true, // 允许导入 JSON 模块
+    "jsx": "react-jsx", // 使用 React 17+ 的新 JSX 转换
+    "outDir": "./dist", // 输出目录
+    "baseUrl": "./src", // 设置基础路径，方便使用绝对路径导入
+    "paths": {
+      "@/*": ["*"] // 配合 webpack 的路径别名设置
+    },
+    "lib": ["DOM", "DOM.Iterable", "ESNext"], // 指定要包含的库文件
+    "allowJs": true, // 允许编译 JavaScript 文件
+    "noEmit": true, // 不生成输出文件，只进行类型检查
+    "incremental": true, // 启用增量编译
+    "isolatedModules": true // 将每个文件作为单独的模块
   },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.js", "src/**/*.jsx"],
+  "exclude": ["node_modules", "dist"]
 }
