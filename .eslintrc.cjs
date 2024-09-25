@@ -26,6 +26,12 @@ module.exports = {
     react: {
       version: 'detect', // 自动检测React版本
     },
+    'import/resolver': {
+      typescript: {
+        // 这里可以指定 tsconfig.json 的路径，通常为 './tsconfig.json'
+        project: './tsconfig.json',
+      },
+    },
   },
   
   // 规则配置

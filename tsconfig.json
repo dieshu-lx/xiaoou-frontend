@@ -10,9 +10,9 @@
     "resolveJsonModule": true, // 允许导入 JSON 模块
     "jsx": "react-jsx", // 使用 React 17+ 的新 JSX 转换
     "outDir": "./dist", // 输出目录
-    "baseUrl": "./src", // 设置基础路径，方便使用绝对路径导入
+    "baseUrl": ".", // 设置基础路径，方便使用绝对路径导入
     "paths": {
-      "@/*": ["*"] // 配合 webpack 的路径别名设置
+      "@/*": ["src/*"] // 配合 webpack 的路径别名设置
     },
     "lib": ["DOM", "DOM.Iterable", "ESNext"], // 指定要包含的库文件
     "allowJs": true, // 允许编译 JavaScript 文件
