@@ -1,17 +1,24 @@
-import { useRef } from 'react';
+import { useRef, useEffect } from 'react';
 
-export const useThrottleFn = (fn: () => void, delay: number) => {
-  const timer = useRef<NodeJS.Timeout | null>(null);
+export const useThrottleFn = <T>(fn: (...args: T[]) => void, delay: number) => {
+  const timer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
-  const _fn = () => {
-    if (timer.current) {
-      return;
-    }
-    fn();
+  const throttleFn = (...args: T[]) => {
+    if (timer.current) return;
+    fn(...args);
     timer.current = setTimeout(() => {
       timer.current = null;
     }, delay);
   };
 
-  return _fn;
+  const cancel = () => {
+    if (timer.current) {
+      clearTimeout(timer.current);
+      timer.current = null;
+    }
+  };
+
+  useEffect(() => cancel, []);
+
+  return { throttleFn, cancel };
 };

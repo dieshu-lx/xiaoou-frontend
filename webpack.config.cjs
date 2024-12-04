@@ -41,6 +41,14 @@ module.exports = {
     compress: true, // 启用 gzip 压缩
     port: 9000, // 服务器端口号
     historyApiFallback: true,
+    proxy: [
+      {
+        context: ['/api'], // 需要代理的请求路径
+        target: 'http://localhost:3000', // 目标API服务器
+        changeOrigin: true,
+        pathRewrite: { '^/api': '' },
+      },
+    ],
   },
   plugins: [
     new HtmlWebpackPlugin({

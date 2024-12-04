@@ -1,31 +1,18 @@
 import styled from '@emotion/styled';
 import React from 'react';
 
-import { InfiniteScrollContainer } from '@/base-components/InfiniteScrollContainer';
-import { useRequestList } from '@/hooks/use-request-list';
+import { Tab } from '@/base-components/tab';
 
 export const HomePage = () => {
-  const mockRequest = async () => {
-    return await new Promise<{ data: string[]; total: number }>((resolve) => {
-      resolve({ data: ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11', '12', '13', '14', '15'], total: 1000 });
-    });
-  };
-
-  const { data, getNextPage } = useRequestList<{ data: string[]; total: number }>(mockRequest, { perPage: 10 });
-
   return (
     <StyledHomeContainer>
-      <InfiniteScrollContainer
-        renderItem={() => <div>123</div>}
-        hasMore={!!data && data.data.length < data.total}
-        loadMore={getNextPage}
-        dataSource={data?.data ?? []}
+      <Tab
+        defaultActive="tab1"
+        tabs={[
+          { label: 'Tab1', value: 'tab1' },
+          { label: 'Tab2', value: 'tab2' },
+        ]}
       />
-      {/* <StyledText>
-        This is&nbsp;
-        <span style={{ color: '#2f2a44' }}>Home</span>
-        &nbsp;page !
-      </StyledText> */}
     </StyledHomeContainer>
   );
 };

@@ -16,7 +16,7 @@ interface InfiniteScrollContainerProps<T> {
 export const InfiniteScrollContainer = <T,>({ renderItem, hasMore, loadMore, dataSource, style }: InfiniteScrollContainerProps<T>) => {
   const [items, setItems] = useState<T[]>([]);
 
-  const throttledLoadMore = useThrottleFn(loadMore, 200);
+  const { throttleFn: throttledLoadMore } = useThrottleFn(loadMore, 200);
 
   const onScroll = useCallback(
     (e: React.UIEvent<HTMLDivElement>) => {
@@ -25,7 +25,7 @@ export const InfiniteScrollContainer = <T,>({ renderItem, hasMore, loadMore, dat
         throttledLoadMore();
       }
     },
-    [hasMore],
+    [hasMore, throttledLoadMore],
   );
 
   useEffect(() => {
