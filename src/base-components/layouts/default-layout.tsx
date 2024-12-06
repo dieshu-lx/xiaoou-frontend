@@ -10,9 +10,9 @@ interface IMainLayoutProps {
 export const MainLayout = memo(({ header, children, footer }: IMainLayoutProps) => {
   return (
     <StyledMainLayout>
-      <StyledHeaderContainer>{header}</StyledHeaderContainer>
+      {header && <StyledHeaderContainer>{header}</StyledHeaderContainer>}
       <StyledContentContainer>{children}</StyledContentContainer>
-      <StyledFooterContainer>{footer}</StyledFooterContainer>
+      {footer && <StyledFooterContainer>{footer}</StyledFooterContainer>}
     </StyledMainLayout>
   );
 });
