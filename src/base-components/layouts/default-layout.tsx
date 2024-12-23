@@ -18,18 +18,23 @@ export const MainLayout = memo(({ header, children, footer }: IMainLayoutProps) 
 });
 
 const StyledMainLayout = styled.div`
-  width: 100%;
-  height: 100%;
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
 `;
 
 const StyledHeaderContainer = styled.div`
+  flex-shrink: 0;
   width: 100%;
 `;
 
 const StyledContentContainer = styled.div`
+  flex: 1;
   width: 100%;
 `;
 
 const StyledFooterContainer = styled.div`
   width: 100%;
+  flex-shrink: 0;
 `;

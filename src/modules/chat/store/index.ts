@@ -8,6 +8,7 @@ class ChatStore {
   messages: Message[] = [];
   loading: boolean = false;
   mode: 'text' | 'image' = 'text';
+  imageToken: string = '';
 
   constructor() {
     makeAutoObservable(this);
@@ -24,6 +25,10 @@ class ChatStore {
   setMode = (mode: 'text' | 'image') => {
     this.mode = mode;
   };
+
+  setImageToken(token: string) {
+    this.imageToken = token;
+  }
 
   updateMessage = (message: Message) => {
     this.messages = this.messages.at(-1) ? [...this.messages.slice(0, -1), message] : [message];
@@ -61,6 +66,7 @@ class ChatStore {
         sessionId: this.sessionId,
         type: this.mode,
         question,
+        token: this.imageToken,
       });
       this.messages.push(response);
       this.setLoading(false);

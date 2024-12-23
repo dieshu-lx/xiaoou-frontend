@@ -9,4 +9,5 @@ export interface ISendMessageParams {
   sessionId: string;
   question: string;
   type: 'text' | 'image';
+  token?: string;
 }

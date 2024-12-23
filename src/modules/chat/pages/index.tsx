@@ -1,5 +1,5 @@
 import styled from '@emotion/styled';
-import { Select } from 'antd';
+import { Input, Select } from 'antd';
 import { observer } from 'mobx-react-lite';
 import React from 'react';
 
@@ -13,7 +13,7 @@ import { Question } from '../components/question';
 import { chatStore } from '../store';
 
 export const ChatPage = observer(() => {
-  const { messages, sendMessage, mode, setMode, loading } = chatStore;
+  const { messages, imageToken, setImageToken, sendMessage, mode, setMode, loading } = chatStore;
 
   const options = [
     { label: '对话', value: 'text' },
@@ -22,6 +22,10 @@ export const ChatPage = observer(() => {
 
   const onModeChange = (value: 'text' | 'image') => {
     setMode(value);
+  };
+
+  const onTokenChange = (value: string) => {
+    setImageToken(value);
   };
 
   const initContent = (
@@ -58,7 +62,10 @@ export const ChatPage = observer(() => {
           </IfElse>
         </StyledMessages>
         <StyledFooter>
-          <StyledSelect value={mode} options={options} onChange={(value) => onModeChange(value as 'text' | 'image')} />
+          <div style={{ display: 'flex', gap: 16 }}>
+            <StyledSelect value={mode} options={options} onChange={(value) => onModeChange(value as 'text' | 'image')} />
+            <StyledInput value={imageToken} onChange={(e) => onTokenChange(e.target.value)} placeholder="输入你的token（可选）" />
+          </div>
           <QuestionInput onSend={sendMessage} />
         </StyledFooter>
       </StyledChat>
@@ -68,7 +75,7 @@ export const ChatPage = observer(() => {
 
 const StyledChat = styled.div`
   width: 100%;
-  height: 100vh;
+  height: 100%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -86,6 +93,10 @@ const StyledMessages = styled.div`
   flex-direction: column;
   gap: 12px;
   padding: 12px 0;
+
+  ::-webkit-scrollbar {
+    display: none;
+  }
 `;
 
 const StyledMessage = styled.div<{ role: 'user' | 'assistant' }>`
@@ -125,3 +136,5 @@ const StyledDesc = styled.div`
   color: #999;
   font-size: 24px;
 `;
+
+const StyledInput = styled(Input)``;
