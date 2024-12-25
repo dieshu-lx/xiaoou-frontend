@@ -8,7 +8,6 @@ class ChatStore {
   messages: Message[] = [];
   loading: boolean = false;
   mode: 'text' | 'image' = 'text';
-  imageToken: string = '';
 
   constructor() {
     makeAutoObservable(this);
@@ -26,15 +25,11 @@ class ChatStore {
     this.mode = mode;
   };
 
-  setImageToken(token: string) {
-    this.imageToken = token;
-  }
-
   updateMessage = (message: Message) => {
     this.messages = this.messages.at(-1) ? [...this.messages.slice(0, -1), message] : [message];
   };
 
-  sendMessage = async (question: string) => {
+  sendMessage = async (question: string, token?: string) => {
     this.messages.push({
       id: Math.random().toString(36).substring(2, 15),
       role: 'user',
@@ -66,7 +61,7 @@ class ChatStore {
         sessionId: this.sessionId,
         type: this.mode,
         question,
-        token: this.imageToken,
+        token: token,
       });
       this.messages.push(response);
       this.setLoading(false);

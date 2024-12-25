@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Input, Select } from 'antd';
 import { observer } from 'mobx-react-lite';
-import React from 'react';
+import React, { useState } from 'react';
 
 import { IfElse } from '@/base-components/IfElse';
 import { MainLayout } from '@/base-components/layouts/default-layout';
@@ -13,7 +13,8 @@ import { Question } from '../components/question';
 import { chatStore } from '../store';
 
 export const ChatPage = observer(() => {
-  const { messages, imageToken, setImageToken, sendMessage, mode, setMode, loading } = chatStore;
+  const { messages, sendMessage, mode, setMode, loading } = chatStore;
+  const [token, setToken] = useState<string>('');
 
   const options = [
     { label: '对话', value: 'text' },
@@ -22,10 +23,6 @@ export const ChatPage = observer(() => {
 
   const onModeChange = (value: 'text' | 'image') => {
     setMode(value);
-  };
-
-  const onTokenChange = (value: string) => {
-    setImageToken(value);
   };
 
   const initContent = (
@@ -64,9 +61,9 @@ export const ChatPage = observer(() => {
         <StyledFooter>
           <div style={{ display: 'flex', gap: 16 }}>
             <StyledSelect value={mode} options={options} onChange={(value) => onModeChange(value as 'text' | 'image')} />
-            <StyledInput value={imageToken} onChange={(e) => onTokenChange(e.target.value)} placeholder="输入你的token（可选）" />
+            <StyledInput value={token} onChange={(e) => setToken(e.target.value)} placeholder="输入你的token（可选）" />
           </div>
-          <QuestionInput onSend={sendMessage} />
+          <QuestionInput onSend={(question: string) => sendMessage(question, token)} />
         </StyledFooter>
       </StyledChat>
     </MainLayout>
