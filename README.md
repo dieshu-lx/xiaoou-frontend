@@ -39,7 +39,7 @@
 ## 使用Dockerfile构建镜像
 
     ```bash
-    docker build -t basic-template .
+    docker build -t xiaoou-frontend .
     ```
 
 > 初次构建镜像时使用，理论上仅需要构建一次

@@ -11,7 +11,8 @@
     "dev": "webpack server --config webpack.config.cjs --open",
     "clean": "yarn cache clean && rm -rf node_modules && sleep 5 && yarn",
     "build": "webpack --config webpack.config.cjs",
-    "lint": "eslint 'src/**/*.{js,tsx}' --fix"
+    "lint": "eslint 'src/**/*.{js,tsx}' --fix",
+    "docker:build": "docker build -t xiaoou-frontend ."
   },
   "dependencies": {
     "@microsoft/fetch-event-source": "^2.0.1",
@@ -59,6 +60,7 @@
     "ts-loader": "^9.5.1",
     "typescript": "^5.5.3",
     "webpack": "^5.92.1",
+    "webpack-bundle-analyzer": "^4.10.2",
     "webpack-cli": "^5.1.4",
     "webpack-dev-server": "^5.0.4"
   }
